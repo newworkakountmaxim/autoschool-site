@@ -11,24 +11,35 @@
 
 ?>
 
-	</div><!-- #content -->
+    <div class="footer" id="callback-btn">
+        <a class="call-back" href="javascript:void(0)" onclick="openNav2()">
+            <img src="<?php echo get_template_directory_uri(); ?>/img/ico/call icon.png" alt="">
+            <div class="call" >ЗВОНОК</div>
+        </a>
+    </div>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'autoschool-mariupol' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'autoschool-mariupol' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'autoschool-mariupol' ), 'autoschool-mariupol', '<a href="http://underscores.me/">Maxim Yashchenko</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+    <div class="sidebar-right" id="sidebarRight">
+        <div class="sidebar-main-container">
+            <a href="javascript:void(0)" onclick="closeNav2()"><img class="menu" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu-close.png"></a>
+        </div>
+    </div>
+
+</div><!--End global wrapper-->
+<!--</div>-->
+<!-- #page -->
+
+<script>
+    function openNav2() {
+        document.getElementById("sidebarRight").style.opacity = "0.8";
+        document.getElementById("sidebarRight").style.right = "0";
+    }
+
+    function closeNav2() {
+        document.getElementById("sidebarRight").style.opacity = "0.1";
+        document.getElementById("sidebarRight").style.right = "-509px";
+    }
+</script>
+
 
 <?php wp_footer(); ?>
 

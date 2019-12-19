@@ -22,10 +22,10 @@ if ( ! function_exists( 'autoschool_mariupol_setup' ) ) :
 		 * If you're building a theme based on autoschool-mariupol, use a find and replace
 		 * to change 'autoschool-mariupol' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'autoschool-mariupol', get_template_directory() . '/languages' );
+		//load_theme_textdomain( 'autoschool-mariupol', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+		//add_theme_support( 'automatic-feed-links' );
 
 		/*
 		 * Let WordPress manage the document title.
@@ -33,7 +33,7 @@ if ( ! function_exists( 'autoschool_mariupol_setup' ) ) :
 		 * hard-coded <title> tag in the document head, and expect WordPress to
 		 * provide it for us.
 		 */
-		add_theme_support( 'title-tag' );
+		//add_theme_support( 'title-tag' );
 
 		/*
 		 * Enable support for Post Thumbnails on posts and pages.
@@ -60,13 +60,13 @@ if ( ! function_exists( 'autoschool_mariupol_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support( 'custom-background', apply_filters( 'autoschool_mariupol_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
+//		add_theme_support( 'custom-background', apply_filters( 'autoschool_mariupol_custom_background_args', array(
+//			'default-color' => 'ffffff',
+//			'default-image' => '',
+//		) ) );
 
 		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		//add_theme_support( 'customize-selective-refresh-widgets' );
 
 		/**
 		 * Add support for core custom logo.
@@ -103,18 +103,18 @@ add_action( 'after_setup_theme', 'autoschool_mariupol_content_width', 0 );
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function autoschool_mariupol_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'autoschool-mariupol' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'autoschool-mariupol' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'autoschool_mariupol_widgets_init' );
+//function autoschool_mariupol_widgets_init() {
+//	register_sidebar( array(
+//		'name'          => esc_html__( 'Sidebar', 'autoschool-mariupol' ),
+//		'id'            => 'sidebar-1',
+//		'description'   => esc_html__( 'Add widgets here.', 'autoschool-mariupol' ),
+//		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+//		'after_widget'  => '</section>',
+//		'before_title'  => '<h2 class="widget-title">',
+//		'after_title'   => '</h2>',
+//	) );
+//}
+//add_action( 'widgets_init', 'autoschool_mariupol_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -122,7 +122,18 @@ add_action( 'widgets_init', 'autoschool_mariupol_widgets_init' );
 function autoschool_mariupol_scripts() {
 	wp_enqueue_style( 'autoschool-mariupol-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'autoschool-mariupol-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_style( 'slick-css',  'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css' );
+
+	wp_enqueue_style( 'monserat-font',  'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto:300,400,500,700&display=swap&subset=cyrillic,cyrillic-ext' );
+
+	wp_enqueue_style( 'main-css',  get_template_directory_uri() . '/css/main.css' );
+
+	//wp_enqueue_script( 'autoschool-mariupol-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20191215', true );
+
+	wp_enqueue_script( 'slick-js', 'http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js' , array( 'jquery' ), '20191215', true );
+
+	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '20191215', true );
+
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -133,22 +144,22 @@ add_action( 'wp_enqueue_scripts', 'autoschool_mariupol_scripts' );
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+//require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+//require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+//require get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+//require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
