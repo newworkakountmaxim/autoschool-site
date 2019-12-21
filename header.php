@@ -50,7 +50,7 @@
 
         <div class="menu-button">
 
-            <a href="javascript:void(0)" onclick="openNav()"><img class="m-but" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu.png"></a>
+            <a href="#" id="openMenuLeft"><img class="m-but" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu.png"></a>
 
             <ul class="social-ico">
                 <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/socials/telegram.png" alt=""></a></li>
@@ -67,22 +67,11 @@
 
         </div>
 
-        <script>
-            function openNav() {
-                document.getElementById("sidebarLeft").style.opacity = "0.8";
-                document.getElementById("sidebarLeft").style.left = "0";
-            }
-
-            function closeNav() {
-                document.getElementById("sidebarLeft").style.opacity = "0.1";
-                document.getElementById("sidebarLeft").style.left = "-495px";
-            }
-        </script>
 
         <div class="sidebar-left" id="sidebarLeft">
 
             <div class="menu-logo-block">
-                <a href="javascript:void(0)" onclick="closeNav()"><img class="menu" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu-close.png"></a>
+                <a href="" id="closeMenuLeft""><img class="menu" id="call-back-menu" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu-close.png"></a>
                 <?php the_custom_logo(); ?>
             </div>
 
@@ -93,7 +82,6 @@
                 'menu_class'     => 'menu-list'
             ) );
             ?>
-
 
             <div class="phone-social-menu">
 

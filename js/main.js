@@ -68,21 +68,63 @@ jQuery( document ).ready(function( $ ) {
                 }
             }
 
-            console.log(countWheel);
-            if (countWheel !== 0) {
-                document.querySelector('.call').style.display = 'none';
-                document.querySelector('.call-back').style.width = '65px';
-            } else {
-                document.querySelector('.call').style.display = 'block';
-                document.querySelector('.call-back').style.width = '231px';
-            }
+            // console.log(countWheel);
+            // if (countWheel !== 0) {
+            //     document.querySelector('.call').style.display = 'none';
+            //     document.querySelector('.call-back').style.width = '65px';
+            // } else {
+            //     document.querySelector('.call').style.display = 'block';
+            //     document.querySelector('.call-back').style.width = '231px';
+            // }
         }
 
 
         //!!!!!!!!!!!!!!END тут все что касается слайдера . И работает оно только для десктопа
     }
 
+    $slickElement = $("#slider");
+    $slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
+        //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+        var curSlide = (currentSlide ? currentSlide : 0) + 1;
+        if (curSlide > 1) {
+            document.querySelector('.call').style.display = 'none';
+            document.querySelector('.call-back').style.width = '65px';
+        } else {
+            document.querySelector('.call').style.display = 'block';
+            document.querySelector('.call-back').style.width = '231px';
+        }
+        console.log('слайдер ' + curSlide + '/' + slick.slideCount);
+    });
 
+
+
+
+
+// Для левой и правой панели
+    $('#closeFormRight').click( function (e) {
+        e.preventDefault();
+        document.getElementById("sidebarRight").style.opacity = "0.1";
+        document.getElementById("sidebarRight").style.right = "-509px";
+    });
+
+    $('#openFormRight').click( function (e) {
+        e.preventDefault();
+        document.getElementById("sidebarRight").style.opacity = "0.8";
+        document.getElementById("sidebarRight").style.right = "0";
+    });
+
+    $('#closeMenuLeft').click( function (e) {
+        e.preventDefault();
+        document.getElementById("sidebarLeft").style.opacity = "0.1";
+        document.getElementById("sidebarLeft").style.left = "-495px";
+    });
+
+    $('#openMenuLeft').click( function (e) {
+        e.preventDefault();
+        document.getElementById("sidebarLeft").style.opacity = "0.8";
+        document.getElementById("sidebarLeft").style.left = "0";
+    });
+// END Для левой и правой панели
 
 
 
