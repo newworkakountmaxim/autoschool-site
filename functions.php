@@ -168,3 +168,130 @@ add_action( 'wp_enqueue_scripts', 'autoschool_mariupol_scripts' );
 //	require get_template_directory() . '/inc/jetpack.php';
 //}
 
+
+
+
+////////////////////////////////////////////////////////////
+///
+///
+add_action('init', 'my_custom_type_blog');
+function my_custom_type_blog(){
+    $args = array(
+        'label'  => null,
+        'labels' => array(
+            'name'               => 'Блог', // основное название для типа записи
+            'singular_name'      => 'Блог', // название для одной записи этого типа
+            'add_new'            => 'Добавить', // для добавления новой записи
+            'edit_item'          => '', // для редактирования типа записи
+            'new_item'           => '', // текст новой записи
+            'view_item'          => 'Просмотреть', // для просмотра записи этого типа.
+            'search_items'       => '', // для поиска по этим типам записи
+            'not_found'          => '', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => '', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родительских типов. для древовидных типов
+            'menu_name'          => 'Блог', // название меню
+        ),
+        'description'         => '',
+        'public'              => true,
+        'publicly_queryable'  => null,
+        'exclude_from_search' => null,
+        'show_ui'             => null,
+        'show_in_menu'        => true,
+        'menu_position'       => null,
+        'menu_icon'           => null,
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical'        => false,
+        'supports'            => array('title','editor','excerpt','thumbnail'),
+        'taxonomies'          => array(),
+        'has_archive'         => false,
+        'rewrite'             => true,
+        'query_var'           => true,
+        'show_in_nav_menus'   => true,
+    );
+    register_post_type('blog', $args );
+}
+
+//add_action('init', 'my_custom_type_contacts');
+//function my_custom_type_contacts(){
+//    $args = array(
+//        'label'  => null,
+//        'labels' => array(
+//            'name'               => 'Контакты', // основное название для типа записи
+//            'singular_name'      => 'Контакт', // название для одной записи этого типа
+//            'add_new'            => 'Добавить контакт', // для добавления новой записи
+//            'add_new_item'       => 'Новый контакт', // заголовка у вновь создаваемой записи в админ-панели.
+//            'edit_item'          => '', // для редактирования типа записи
+//            'new_item'           => '', // текст новой записи
+//            'view_item'          => 'Просмотреть', // для просмотра записи этого типа.
+//            'search_items'       => '', // для поиска по этим типам записи
+//            'not_found'          => '', // если в результате поиска ничего не было найдено
+//            'not_found_in_trash' => '', // если не было найдено в корзине
+//            'parent_item_colon'  => '', // для родительских типов. для древовидных типов
+//            'menu_name'          => 'Контакты', // название меню
+//        ),
+//        'description'         => '',
+//        'public'              => true,
+//        'publicly_queryable'  => null,
+//        'exclude_from_search' => null,
+//        'show_ui'             => null,
+//        'show_in_menu'        => true,
+//        'menu_position'       => null,
+//        'menu_icon'           => null,
+//        //'capability_type'   => 'post',
+//        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+//        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+//        'hierarchical'        => false,
+//        'supports'            => array('title','editor','excerpt','thumbnail'),
+//        'taxonomies'          => array(),
+//        'has_archive'         => false,
+//        'rewrite'             => true,
+//        'query_var'           => true,
+//        'show_in_nav_menus'   => true,
+//    );
+//    register_post_type('contacts', $args );
+//}
+
+// хук для регистрации
+add_action('init', 'create_blog_taxonomy');
+function create_blog_taxonomy()
+{
+    register_taxonomy('taxonomy-blog', array('blog'), array(
+        'label' => '', // определяется параметром $labels->name
+        'labels' => array(
+            'name' => 'Категории блога',
+            'singular_name' => 'Категория блога',
+            'search_items' => 'Search Категории блога',
+            'all_items' => 'All Категории блогай',
+            'parent_item' => 'Parent Категория блога',
+            'parent_item_colon' => 'Parent Категория блога:',
+            'edit_item' => 'Edit Категория блога',
+            'update_item' => 'Update Категория блога',
+            'add_new_item' => 'Add New Категория блога',
+            'new_item_name' => 'New Категория блога',
+            'menu_name' => 'Категория блога',
+        ),
+        'description' => '', // описание таксономии
+        'public' => true,
+        'publicly_queryable' => null, // равен аргументу public
+        'show_in_nav_menus' => true, // равен аргументу public
+        'show_ui' => true, // равен аргументу public
+        'show_tagcloud' => true, // равен аргументу show_ui
+        'show_in_rest' => null, // добавить в REST API
+        'rest_base' => null, // $taxonomy
+        'hierarchical' => true,
+        'update_count_callback' => '',
+        'rewrite' => true,
+        //'query_var'             => $taxonomy, // название параметра запроса
+        'capabilities' => array(),
+        'meta_box_cb' => null, // callback функция. Отвечает за html код метабокса (с версии 3.8): post_categories_meta_box или post_tags_meta_box. Если указать false, то метабокс будет отключен вообще
+        'show_admin_column' => true, // Позволить или нет авто-создание колонки таксономии в таблице ассоциированного типа записи. (с версии 3.5)
+        '_builtin' => false,
+        'show_in_quick_edit' => null, // по умолчанию значение show_ui
+    ));
+}
+
+//Kroshki
+
+//End kroshki

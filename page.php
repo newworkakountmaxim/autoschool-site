@@ -15,19 +15,17 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', 'page' );
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    <div class="filial-content-container">
+        <div class="breadcrumb-list-filial">
+            <a href="#" >Главная >> г. Мариуполь Проспект Мира, 69</a>
+        </div>
+        <div class="title-filial">
+            <h1> <?php the_title(); ?></h1>
+        </div>
+        <div class="contact-phone-container">
+            <?php the_content(); ?>
+        </div>
+    </div>
 
 <?php
 get_footer();
