@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: black;
+        }
+        .div1 {
+            position: absolute;
+            left: 0;
+            height: 99%;
+            width: 40%;
+            background: rgb(82, 82, 82);
+            z-index: 2;
+        }
+        .div2 {
+            position: absolute;
+            right: 0;
+            height: 99%;
+            width: 40%;
+            background: rgb(82, 82, 82);
+            z-index: 2;
+        }
+        .div3 {
+            position: absolute;
+            top: 0;
+            height: 40%;
+            width: 100%;
+            background: rgb(82, 82, 82);
+            z-index: 2;
+        }
+        .div4 {
+            position: absolute;
+            bottom: 0;
+            height: 40%;
+            width: 100%;
+            background: rgb(82, 82, 82);
+            z-index: 2;
+        }
+        .button {
+            position: absolute;
+            right: 40.1%;
+            top: 40.1%;
+            width: 19.7%;
+            height: 19.6%;
+            background: rgba(107, 107, 107, 0.95);
+            border:1px solid grey;
+            filter: blur(1px);
+            -webkit-filter: blur(1px);
+
+            z-index: 2;
+        }
+        
+        
+    .glow-block {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(#bdbdbd 6%, black 72%);
+    transform: translate(-190px, -190px);
+    border-radius: 60px;
+    z-index: 1
+    }
+    .bg {
+        z-index: 2;
+
+    }
+    </style>
+    <script>
+        document.onmousemove = function (){
+            document.getElementsByTagName('body')[0].insertAdjacentHTML('beforeEnd', '<div class="glow-block" id="cat"></div>');
+            var cat = document.getElementById('cat');
+            cat.style.position = 'fixed';
+ 
+            document.onmousemove = function(event){
+                cat.style.left = event.clientX +20+'px';
+                cat.style.top = event.clientY +20+'px';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+    <div class="button"></div>
+</body>
+</html>
+

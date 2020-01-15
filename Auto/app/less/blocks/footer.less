@@ -1,0 +1,45 @@
+.footer{
+  position: absolute;
+  bottom:0;
+  right:0;
+  z-index:10;
+  margin-bottom: 3.7%;
+  margin-right: 4.2%;
+  //display: none;
+}
+.call-back {
+  width: 231px;
+  height: 66px;
+  display: flex;
+  background: #000000DE;
+  border: 2px solid #FFFFFF;
+  border-radius: 50px;
+  text-decoration: none;
+}
+.call-back img {
+  height: 90%;
+  margin: 4px -27px 0px 19px;
+}
+.call {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  margin: auto;
+}
+
+@media (min-width: 320px) and (max-width: 800px) {
+  .call {
+    display: none;
+  }
+  .call-back {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 65px !important;
+  }
+  .call-back img {
+    margin: 0;
+  }
+}

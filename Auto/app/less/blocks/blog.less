@@ -1,0 +1,95 @@
+/*    Для табов */
+.tab a {
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.tab a:hover, .tab a.active {
+    color: red;
+}
+.tablinks {
+    display: block;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1.4s;
+    animation: fadeEffect 1.4s;
+}
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/* Конец    Для табов */
+.breadcrumb-list-filial {
+    margin-top: 10px;
+    font-family: 'Segoe UI';
+    font-size: 21px;
+}
+
+.blog-title-mobile {
+    font-family: 'Segoe UI';
+    font-size: 2em;
+    font-weight: 400;
+}
+.blog-content {
+    display: flex;            
+}
+.blog-content a {
+    color:#000;   
+} 
+.blog-content a:hover, .blog-content a:visited, .blog-content a:link{
+    color:#444;
+}  
+
+.blog-content-sidebar {
+    width: 15%;
+    margin-right: 5%;
+}
+
+.blog-content-content {
+    width: 70%
+}
+
+.blog-content-sidebar-categories,
+.blog-content-sidebar-social {
+    background: #fff;
+    padding: 10px 20px;
+    margin: 5px 0 30px;
+    box-shadow: 0px 3px 6px #00000066;
+}
+.blog-content-sidebar-categories-title {
+    font-size: 15px;
+    line-height: 50px;
+    font-weight: 600;
+}
+.blog-content-sidebar-categories {
+    font-size: 12px;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+
+
+/*    Все остальное. Тут чистая схематика */
+@media all and (max-width: 1024px) {
+    .blog-content {
+    flex-direction: row-reverse;
+    }
+}
+@media all and (max-width: 768px) {
+    .blog-content-sidebar, .blog-content-content{
+    width: 100%;
+    }
+    .blog-content {
+    flex-direction: column-reverse;
+    }
+    .blog-content-sidebar{
+    display: flex;
+    }
+    .blog-content-sidebar-categories, .blog-content-sidebar-social{
+    width: 50%;
+    }
+}

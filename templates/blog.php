@@ -6,84 +6,24 @@
  */
 get_header();
 ?>
-    <style>
-/*    Для табов */
-        .tab a {
-            padding: 14px 16px;
-            transition: 0.3s;
-        }
-        .tab a:hover, .tab a.active {
-            color: red;
-        }
-        .tablinks {
-            display: block;
-        }
-        .tabcontent {
-            display: none;
-            padding: 6px 12px;
-            -webkit-animation: fadeEffect 1.4s;
-            animation: fadeEffect 1.4s;
-        }
-        @-webkit-keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-        @keyframes fadeEffect {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-/* Конец    Для табов */
-        .blog-content{
-            display: flex;
-        }
-
-        .blog-content-sidebar{
-            border:1px solid red;
-            width: 30%
-        }
-
-        .blog-content-content{
-            border:1px solid red;
-            width: 70%
-        }
-
-        .blog-content-sidebar-categories,
-        .blog-content-sidebar-social{
-            background: #fff;
-            padding:10px 20px;
-            margin: 5px 0 30px;
-            border: 1px solid 444
-        }
-
-
-
-
-
-/*    Все остальное. Тут чистая схематика */
-
-/* Конец    Все остальное. Тут чистая схематика */
-    </style>
-
-
-    <div class="filial-content-container">
+     <div class="filial-content-container">
         <div class="breadcrumb-list-filial">
-            <a href="#" >Главная >> г. Мариуполь Проспект Мира, 69</a>
+           <?php if( function_exists('kama_breadcrumbs') ) kama_breadcrumbs(); ?>
         </div>
 
         <h1 class="blog-title-mobile"> <?php the_title(); ?></h1>
-        <?php the_post(); the_content(); ?>
-
+        
         <div class="blog-content">
 
             <div class="blog-content-sidebar">
-                <h1 class="blog-title-desktop"> <?php the_title(); ?></h1>
+               <!--  <h1 class="blog-title-desktop"> <?php the_title(); ?></h1> -->
                 <div class="blog-content-sidebar-categories">
                     <div class="blog-content-sidebar-categories-title">Категории:</div>
-                    <a class="tablinks" onclick="openCity(event, 'one')" id="defaultOpen">Все</a>
-                    <a class="tablinks" onclick="openCity(event, 'two')">Автолюбитель</a>
-                    <a class="tablinks" onclick="openCity(event, 'three')">Автоновости</a>
-                    <a class="tablinks" onclick="openCity(event, 'four')">Энциклопедия водителя</a>
-                    <a class="tablinks" onclick="openCity(event, 'five')">Мир авто</a>
+                    <a href="#" class="tablinks" onclick="openCity(event, 'one')" id="defaultOpen">Все</a>
+                    <a href="#" class="tablinks" onclick="openCity(event, 'two')">Автолюбитель</a>
+                    <a href="#" class="tablinks" onclick="openCity(event, 'three')">Автоновости</a>
+                    <a href="#" class="tablinks" onclick="openCity(event, 'four')">Энциклопедия водителя</a>
+                    <a href="#" class="tablinks" onclick="openCity(event, 'five')">Мир авто</a>
                 </div>
                 <div class="blog-content-sidebar-social">
                     <div class="blog-content-sidebar-social-title">Блольше новостей тут:</div>
@@ -92,7 +32,49 @@ get_header();
 
             <div class="blog-content-content">
                 <div id="one" class="tabcontent">
-                    <h3>Все</h3>
+                    <?php 
+                    $args = array( 'post_type' => 'blog', 'posts_per_page' => 20 );
+                    $loop = new WP_Query( $args );
+                    while ( $loop->have_posts() ) : $loop->the_post();                      
+                    ?>     
+                    <div class="blog-item">
+                        <div class="blog-item-title"><?php the_title(); ?></div>
+                        <div class="blog-item-subtitle">
+                            <div class="blog-item-subtitle-date"> <?php echo get_the_date('d.m.Y'); ?></div>
+                            <div class="blog-item-subtitle-watch"> 1280</div>
+                        </div>
+                        <img class="blog-item-img" src="<?php the_post_thumbnail_url(); ?>" alt="">
+                        <div class="blog-item-excerpt"><?php the_excerpt(); ?></div> 
+                        <div class="blog-item-tags-more">
+                            <?php 
+                                $categories = get_categories( array(
+                                    'taxonomy'     => 'taxonomy-blog',
+                                    'type'         => 'blog',
+                                    'child_of'     => 0,
+                                    'parent'       => '',
+                                    'orderby'      => 'name',
+                                    'order'        => 'ASC',
+                                    'hide_empty'   => 1,
+                                    'hierarchical' => 1,
+                                    'exclude'      => '',
+                                    'include'      => '',
+                                    'number'       => 0,
+                                    'pad_counts'   => false,
+                                    // полный список параметров смотрите в описании функции http://wp-kama.ru/function/get_terms
+                                ) );
+                                echo "<div class='blog-item-tags-more-title'>Теги</div>";
+                                if( $categories ){
+                                    foreach( $categories as $cat ){                                        
+                                        echo "<div class='blog-item-tags-more-item'>".$cat->name."</div>";            
+                                    }
+                                }                                  
+                            ?>
+                            <div class="blog-item-tags"></div>
+                            <a href="<?php the_permalink(); ?>" class="blog-item-more">Далее</a>
+                        </div>                     
+                    </div> 
+                    <?php endwhile;?>               
+
                 </div>
 
                 <div id="two" class="tabcontent">

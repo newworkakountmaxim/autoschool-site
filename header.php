@@ -30,20 +30,22 @@
             <?php the_custom_logo(); ?>
 
             <div class="global-phones-container">
-                <div class="number-phone-container">
+                <!-- !!! div -> a !!! -->
+                <a href="#" class="number-phone-container">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/ico/call-answer.png">
                     <div class="number-phone">+38 (050) 963 20 10</div>
-                </div>
+                </a>
 
-                <div class="number-phone-container">
+                <a href="#" class="number-phone-container">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/ico/call-answer.png">
                     <div class="number-phone">+38 (050) 963 20 10</div>
-                </div>
+                </a>
 
-                <div class="number-phone-container">
+                <a href="#" class="number-phone-container">
                     <img src="<?php echo get_template_directory_uri(); ?>/img/ico/call-answer.png">
                     <div class="number-phone">+38 (050) 963 20 10</div>
-                </div>
+                </a>
+                <!-- END!!! div -> a !!! -->
             </div>
 
         </div>
@@ -71,7 +73,7 @@
         <div class="sidebar-left" id="sidebarLeft">
 
             <div class="menu-logo-block">
-                <a href="" id="closeMenuLeft""><img class="menu" id="call-back-menu" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu-close.png"></a>
+                <a href="" id="closeMenuLeft"><img class="menu" id="call-back-menu" src="<?php echo get_template_directory_uri(); ?>/img/controls/menu-close.png"></a>
                 <?php the_custom_logo(); ?>
             </div>
 

@@ -1,0 +1,31 @@
+//Media screen-seven
+@media (min-width: 320px) and (max-width: 800px) {
+    .screen-seven-main-container {
+        padding: 5% 5% 6% 5%;
+    }
+    .screen-seven-callback-and-FAQ-wrapper {
+        flex-wrap: wrap-reverse;
+    }
+    .FAQ-main-container {
+        width: 100%;
+    }
+    .FAQ-container {
+        height: 390px;
+    }
+    .FAQ-accordion {         
+        &:after{
+            content: '\2611';
+        }
+    }
+    .FAQ-accordion.active:after {
+        content: '\2612';
+    }
+    .panel {
+        width: 100%;
+        font-size: 1.1em;
+    }
+    .screen-seven-callback-container {
+        margin-top: 5%;
+        width: 100%;
+    }
+}

@@ -1,0 +1,74 @@
+@media (min-width: 1024px) {
+  .stage-blocks-container-accordion {
+    display: none;
+  }
+  .title-stage-block {
+    &::before, &::after{
+      display: none;
+    }
+  }
+  .description-stage {
+    max-height: fit-content;
+    overflow: visible;
+  }
+}
+@media (min-width: 320px) and (max-width: 800px) {
+  .docs-stages-container {
+    padding: 5.5% 4% 0% 4%;
+    flex-direction: column;
+    h2 {
+      font-size: 30px;
+      color: #000000;
+    }
+  }
+  .title-doc-block-container {
+    width: 100%;
+  }
+  .docs-title {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+  .docs-blocks-container {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .doc-description {
+    font-size: 15px;
+    letter-spacing: 0.24px;
+  }
+
+  .title-stage-blocks-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   }
+  .title-stage {
+    h2 {
+    font-size: 30px;
+    }
+    margin-bottom: 6%;
+  }
+  .stage-blocks-container {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+  }
+  .title-stage-block {
+    color: black;
+    font-size: 17px;
+  }
+  .stage-block {
+    width: 100%;
+    margin-bottom: 5%;
+    &:nth-child(even) {
+      margin-top: 0%;
+    }
+  }
+  .description-stage {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 400;
+    width: 85%;
+    margin-bottom: 10%;
+  }
+}
